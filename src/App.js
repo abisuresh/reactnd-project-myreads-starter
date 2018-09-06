@@ -1,6 +1,9 @@
 import React, { Component } from 'react' /*Edited this*/
 // import * as BooksAPI from './BooksAPI'
 import * as BooksAPI from './BooksAPI'
+import BooksList from './BooksList'
+import { BrowserRouter } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import './App.css'
 
 class BooksApp extends React.Component {
@@ -23,6 +26,7 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
+        <BooksList/> /*Added this to test whether import BooksList works above*/
         {this.state.showSearchPage ? (
           <div className="search-books">
             <div className="search-books-bar">
