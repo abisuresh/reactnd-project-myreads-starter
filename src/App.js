@@ -1,9 +1,6 @@
 import React, { Component } from 'react' /*Edited this*/
 // import * as BooksAPI from './BooksAPI'
 import * as BooksAPI from './BooksAPI'
-import BooksList from './BooksList'
-import { BrowserRouter } from 'react-router-dom'
-import { Route } from 'react-router-dom'
 import './App.css'
 
 class BooksApp extends React.Component {
@@ -14,19 +11,33 @@ class BooksApp extends React.Component {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    showSearchPage: false
 
-    /*Adding a life cycle method */
-    componentDidMount(){
-      BooksAPI.getAll().then(() => )
+    //Create empty array to hold all of books
+      booksList: [],
+
+      //Set initial state for displaying search page
+      showSearchPage: false,
+
     }
 
-  }
+
+    //Adding a life cycle method
+    componentDidMount(){
+      BooksAPI.getAll().then((booksList) => {
+        this.setState(booksList)
+      })
+    }
+
+
+
+  //render page
+    // Add state updates to books
+    // Update and expand  functionality for search
+    // Use Route to make sure back-page and forward-page work as expected
 
   render() {
     return (
       <div className="app">
-        <BooksList/> /*Added this to test whether import BooksList works above*/
         {this.state.showSearchPage ? (
           <div className="search-books">
             <div className="search-books-bar">
