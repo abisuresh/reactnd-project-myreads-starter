@@ -1,7 +1,7 @@
 import React, { Component } from 'react' /*Edited this*/
 // import * as BooksAPI from './BooksAPI'
 import * as BooksAPI from './BooksAPI'
-import BooksList from './BooksList'
+import BooksList from './BooksSearch'
 import { BrowserRouter } from 'react-router-dom'
 import { Route } from 'react-router-dom'
 import { Link } from 'react-router-dom'
@@ -25,23 +25,13 @@ class BooksApp extends React.Component {
 
     }
 
-
     //Adding a life cycle method
     componentDidMount(){
       BooksAPI.getAll().then((booksList) => {
-        this.setState(booksList)
+        this.setState({ booksList })
       })
     }
 
-    //Component to change lists
-    //
-    // changeList = (booksList) => {
-    //
-    // }
-
-    //Component to add a new book (that isn't already on a list) to a list
-
-    //Component to remove book from list (switch to none)
 
 
   //render page
