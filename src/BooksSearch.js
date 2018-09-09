@@ -7,9 +7,6 @@ import * as BooksAPI from './BooksAPI'
 
 
 class BooksSearch extends Component {
-    // static propTypes = {
-    //     booksList: PropTypes.array.isRequired
-    // }
 
     state = {
 
@@ -34,7 +31,7 @@ class BooksSearch extends Component {
     //     }
     // }
 
-    findingBook = () => {
+    findingBook = (query) => {
         BooksAPI.search(this.state.query).then((booksList) => {
             this.setState({ booksList })
         })
@@ -45,7 +42,8 @@ class BooksSearch extends Component {
         return (
                 <div className="search-books">
                     <div className="search-books-bar">
-                        <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
+                        {/*<a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>*/}
+                        <Link className="close-search" to="/">Close</Link>
                         <div className="search-books-input-wrapper">
                             {/*
                              NOTES: The search from BooksAPI is limited to a particular set of search terms.
@@ -62,6 +60,7 @@ class BooksSearch extends Component {
                     <div className="search-books-results">
                         <ol className="books-grid"></ol>
                     </div>
+
                 </div>
         )
     }
