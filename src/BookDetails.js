@@ -3,11 +3,22 @@ import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import * as BooksAPI from './BooksAPI'
 
-class SingleBookDisplay extends Component {
+class BookDetails extends Component {
     static propTypes = {
         booksList: PropTypes.array.isRequired
     }
+
+    //Update what shelf book is on
+
+    componentDidMount(){
+        BooksAPI.update(book, shelf).then((booksList) => {
+            this.setState({ booksList })
+        })
+    }
+
+    //Render book
 
     render() {
         const { booksList, name, author, imgURL } = this.props
@@ -43,4 +54,4 @@ class SingleBookDisplay extends Component {
 }
 
 
-export default SingleBookDisplay
+export default BookDetails
