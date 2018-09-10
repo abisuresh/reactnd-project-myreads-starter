@@ -31,6 +31,8 @@ class BooksSearch extends Component {
     //     }
     // }
     //
+
+    //Function that searches for books
     findingBook (query) {
         BooksAPI.search(this.state.query).then((booksList) => {
             this.setState({ booksList })
@@ -59,6 +61,16 @@ class BooksSearch extends Component {
                     </div>
                     <div className="search-books-results">
                         <ol className="books-grid">
+                             {/*this.state.booksList.each //render a BookDetails component  */}
+                            {booksList.map(function(){
+                                <BookDetails render={() => (
+                                    this.props.imageLinks.thumbnail, this.props.title, this.props.authors,
+                                                 this.props.shelf)}
+                                        onSearch = {this.findingBook}
+
+                                        />
+
+                            })}
                              <BookDetails render={() => (
                                  <booksList
                                  onSearch = {this.findingBook}/>

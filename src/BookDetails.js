@@ -19,13 +19,14 @@ class BookDetails extends Component {
     //Render book
 
     render() {
-        const { booksList, name, author, imgURL, category } = this.props
+        const { booksList, title, authors, imageLinks, shelf } = this.props
+
         return (
             <div>
                 <div className="book">
                     <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 193,
-                            backgroundImage: imgURL
+                            imgURL: this.props.imageLinks.thumbnail
                         }}></div>
                         <div className="book-shelf-changer">
                             <select>
@@ -36,12 +37,12 @@ class BookDetails extends Component {
                                 <option value="none">None</option>
                             </select>
                             <div className="book-shelf-category">
-                                <booksList onClick = {this.updateShelf} />
+                                <booksList shelf = {this.props.updateShelf} />
                             </div>
                         </div>
                     </div>
-                    <div className="book-title">this.props.name</div>
-                    <div className="book-authors">this.props.author</div>
+                    <div className="book-title">this.props.title</div>
+                    <div className="book-authors">this.props.authors</div>
                 </div>
                 {/*<div className= "bookList-details">*/}
                     {/*<p>{booksList.name}</p>*/}
