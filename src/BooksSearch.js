@@ -33,8 +33,8 @@ class BooksSearch extends Component {
 
     //Function that searches for books
     findingBook (query) {
-        BooksAPI.search(this.state.query).then((booksList) => {
-            this.setState({ booksList })
+        BooksAPI.search(query).then((booksList) => {
+            this.setState({ booksList: booksList })
         })
     }
 
@@ -54,28 +54,27 @@ class BooksSearch extends Component {
                              However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                              you don't find a specific author or title. Every search is limited by search terms.
                              */}
-                            <input type="text" placeholder="Search by title or author"/>
+                            <input type="text" placeholder="Search by title or author"
+                                value = {this.state.query}
+                                onChange={(event) => { this.findingBook(event.target.value)} }
+                            />
 
                         </div>
                     </div>
                     <div className="search-books-results">
-                        <BookDetails
-                            onSearch = {this.findingBook}
-                        />
+                        {/*<BookDetails*/}
+                            {/*onSearch = {this.findingBook}*/}
+                        {/*/>*/}
                         <ol className="books-grid">
                              {/* Creating a function to iterate over each book and
                              render a BookDetails component  */}
-                            {/*{booksList.map(function(book, title){*/}
-                                {/*return <BookDetails*/}
-                                    {/*key = {this.props.title} {book} imgURL="this.props.imageLinks.thumbnail" title= "this.props.title" authors="this.props.authors"*/}
-                                                 {/*shelf="this.props.shelf"/>*/}
-
-
-                            {/*})}*/}
-                             <BookDetails render={() => (
-                                 <booksList
-                                 onSearch = {this.findingBook}/>
-                             )}/>
+                            {this.state.booksList.map( (book) => (<BookDetails
+                                key = {book.title} imgURL= {book.imageLinks.thumbnail} title= {book.title} authors= {book.authors}
+                                shelf={book.shelf}/>))}
+                             {/*<BookDetails render={() => (*/}
+                                 {/*<booksList*/}
+                                 {/*onSearch = {this.findingBook}/>*/}
+                             {/*)}/>*/}
                         </ol>
                     </div>
 

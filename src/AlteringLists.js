@@ -26,7 +26,7 @@ class AlteringLists extends Component {
                 this.setState({shelf:'wantToRead'})
 
             }else{
-                this.setState({shelf: ''})
+                this.setState({shelf: 'none'})
             }
 
             this.setState({ booksList })
