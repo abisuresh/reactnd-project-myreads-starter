@@ -6,10 +6,7 @@ import PropTypes from 'prop-types'
 
 const { booksList } = this.props
 class AlteringLists extends Component {
-    static propTypes = {
-        booksList: PropTypes.array.isRequired
-    }
-
+    
     render() {
         const { booksList } = this.props
 

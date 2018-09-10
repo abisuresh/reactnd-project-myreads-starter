@@ -6,13 +6,11 @@ import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 
 class BookDetails extends Component {
-    static propTypes = {
-        booksList: PropTypes.array.isRequired
-    }
 
     //Update what shelf book is on
 
-    componentDidMount(){
+    updateShelf = () => {
+        const {book, shelf}= this.props
         BooksAPI.update(book, shelf).then((booksList) => {
             this.setState({ booksList })
         })
@@ -21,13 +19,13 @@ class BookDetails extends Component {
     //Render book
 
     render() {
-        const { booksList, name, author, imgURL } = this.props
+        const { booksList, name, author, imgURL, category } = this.props
         return (
             <div>
                 <div className="book">
                     <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 193,
-                            backgroundImage: booksList.props.imgURL
+                            backgroundImage: imgURL
                         }}></div>
                         <div className="book-shelf-changer">
                             <select>
@@ -37,6 +35,9 @@ class BookDetails extends Component {
                                 <option value="read">Read</option>
                                 <option value="none">None</option>
                             </select>
+                            <div className="book-shelf-category">
+                                <booksList onClick = {this.updateShelf} />
+                            </div>
                         </div>
                     </div>
                     <div className="book-title">this.props.name</div>

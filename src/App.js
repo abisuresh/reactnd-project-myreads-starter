@@ -1,8 +1,6 @@
-import React, { Component } from 'react' /*Edited this*/
-// import * as BooksAPI from './BooksAPI'
+import React, { Component } from 'react'
 import * as BooksAPI from './BooksAPI'
 import BooksSearch from './BooksSearch'
-import BooksList from './BooksSearch'
 import { BrowserRouter } from 'react-router-dom'
 import { Route } from 'react-router-dom'
 import { Link } from 'react-router-dom'
@@ -32,8 +30,6 @@ class BooksApp extends React.Component {
         this.setState({ booksList })
       })
     }
-
-
 
   //render page
     // Add state updates to books
@@ -209,7 +205,6 @@ class BooksApp extends React.Component {
 
               )}
               />
-
 
                 <div className="open-search">
                   <Link className="open-search" to="/search">Add a book</Link>

@@ -4,6 +4,7 @@ import sortBy from 'sort-by'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
+import BookDetails from "./BookDetails";
 
 
 class BooksSearch extends Component {
@@ -13,7 +14,6 @@ class BooksSearch extends Component {
         query: '',
 
     }
-
 
     //Create function to search for books
     // findingBook = () => {
@@ -30,15 +30,15 @@ class BooksSearch extends Component {
     //
     //     }
     // }
-
-    findingBook = (query) => {
+    //
+    findingBook (query) {
         BooksAPI.search(this.state.query).then((booksList) => {
             this.setState({ booksList })
         })
     }
 
     render() {
-        const { booksList } = this.props
+        const booksList = this.state.booksList
         return (
                 <div className="search-books">
                     <div className="search-books-bar">
@@ -58,7 +58,12 @@ class BooksSearch extends Component {
                         </div>
                     </div>
                     <div className="search-books-results">
-                        <ol className="books-grid"></ol>
+                        <ol className="books-grid">
+                             <BookDetails render={() => (
+                                 <booksList
+                                 onSearch = {this.findingBook}/>
+                             )}/>
+                        </ol>
                     </div>
 
                 </div>
