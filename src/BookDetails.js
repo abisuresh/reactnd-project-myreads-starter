@@ -50,12 +50,6 @@ class BookDetails extends Component {
                     <div className="book-title">{this.props.title}</div>
                     <div className="book-authors">{this.props.authors}</div>
                 </div>
-                {/*<div className= "bookList-details">*/}
-                    {/*<p>{booksList.name}</p>*/}
-                    {/*<p>{booksList.author}</p>*/}
-                    {/*<p>{booksList.img} </p>*/}
-                    {/*<p>{booksList.state}</p>*/}
-                {/*</div>*/}
             </div>
         )
     }

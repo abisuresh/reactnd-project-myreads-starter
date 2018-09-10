@@ -55,8 +55,9 @@ class BooksSearch extends Component {
                              you don't find a specific author or title. Every search is limited by search terms.
                              */}
                             <input type="text" placeholder="Search by title or author"
-                                value = {this.state.query}
-                                onChange={(event) => { this.findingBook(event.target.value)} }
+                                value = {this.state.query.bind}
+                                onChange={(event) => {this.findingBook(event.target.value)} }
+
                             />
 
                         </div>
@@ -71,10 +72,6 @@ class BooksSearch extends Component {
                             {this.state.booksList.map( (book) => (<BookDetails
                                 key = {book.title} imgURL= {book.imageLinks.thumbnail} title= {book.title} authors= {book.authors}
                                 shelf={book.shelf}/>))}
-                             {/*<BookDetails render={() => (*/}
-                                 {/*<booksList*/}
-                                 {/*onSearch = {this.findingBook}/>*/}
-                             {/*)}/>*/}
                         </ol>
                     </div>
 
