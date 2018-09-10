@@ -62,13 +62,14 @@ class BooksSearch extends Component {
                     <div className="search-books-results">
                         <ol className="books-grid">
                              {/*this.state.booksList.each //render a BookDetails component  */}
-                            {booksList.map(function(){
+                            {booksList.map(function(name, i){
                                 <BookDetails render={() => (
                                     this.props.imageLinks.thumbnail, this.props.title, this.props.authors,
                                                  this.props.shelf)}
                                         onSearch = {this.findingBook}
 
                                         />
+                                    return
 
                             })}
                              <BookDetails render={() => (
