@@ -7,6 +7,12 @@ import * as BooksAPI from './BooksAPI'
 
 class BookDetails extends Component {
 
+    state = {
+
+        booksList: []
+
+    }
+
     //Update what shelf book is on
 
     updateShelf = () => {
@@ -26,7 +32,7 @@ class BookDetails extends Component {
                 <div className="book">
                     <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 193,
-                            imgURL: this.props.imageLinks.thumbnail
+                            backgroundImage: this.props.imgURL
                         }}></div>
                         <div className="book-shelf-changer">
                             <select>

@@ -13,6 +13,8 @@ class BooksSearch extends Component {
 
         query: '',
 
+        booksList: []
+
     }
 
     //Create function to search for books
@@ -26,11 +28,8 @@ class BooksSearch extends Component {
     //     })
     //
     //     if(resultSearch){
-    //
-    //
     //     }
     // }
-    //
 
     //Function that searches for books
     findingBook (query) {
@@ -60,18 +59,19 @@ class BooksSearch extends Component {
                         </div>
                     </div>
                     <div className="search-books-results">
+                        <BookDetails
+                            onSearch = {this.findingBook}
+                        />
                         <ol className="books-grid">
-                             {/*this.state.booksList.each //render a BookDetails component  */}
-                            {booksList.map(function(name, i){
-                                <BookDetails render={() => (
-                                    this.props.imageLinks.thumbnail, this.props.title, this.props.authors,
-                                                 this.props.shelf)}
-                                        onSearch = {this.findingBook}
+                             {/* Creating a function to iterate over each book and
+                             render a BookDetails component  */}
+                            {/*{booksList.map(function(book, title){*/}
+                                {/*return <BookDetails*/}
+                                    {/*key = {this.props.title} {book} imgURL="this.props.imageLinks.thumbnail" title= "this.props.title" authors="this.props.authors"*/}
+                                                 {/*shelf="this.props.shelf"/>*/}
 
-                                        />
-                                    return
 
-                            })}
+                            {/*})}*/}
                              <BookDetails render={() => (
                                  <booksList
                                  onSearch = {this.findingBook}/>

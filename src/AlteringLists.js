@@ -6,7 +6,34 @@ import PropTypes from 'prop-types'
 
 const { booksList } = this.props
 class AlteringLists extends Component {
-    
+
+    state =  {
+        booksList: []
+    }
+
+    //Function to filter the books based on what shelf they are on
+    //Change the property of shelf based on what shelf a book is on
+
+    categorizingBook = () => {
+        BooksAPI.filter(this.state.booksList).then((booksList) => {
+            if(this.props.shelf == 'currentlyReading'){
+                this.setState({shelf: 'currentlyReading'})
+
+            }else if(this.props.shelf == 'Read'){
+                this.setState({shelf:'Read'})
+
+            }else if(this.props.shelf =='wantToRead'){
+                this.setState({shelf:'wantToRead'})
+
+            }else{
+                this.setState({shelf: ''})
+            }
+
+            this.setState({ booksList })
+        })
+    }
+
+
     render() {
         const { booksList } = this.props
 
