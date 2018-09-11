@@ -4,17 +4,27 @@ import sortBy from 'sort-by'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
-import AlteringLists from './AlteringLists'
+import ShelfLayout from './ShelfLayout'
 
 class BookDetails extends Component {
+    //
+    // static propTypes = {
+    //     shelf: PropTypes.toString().isRequired
+    // }
 
-    static propTypes = {
-        shelf: PropTypes.toString.isRequired
+    constructor(props) {
+        super(props);
+        this.state = {value: props.shelf}
     }
 
     state = {
 
-        booksList: []
+        booksList: [],
+
+    }
+
+    shelfChange= function(event){
+        this.setState({value:event.target.value});
 
     }
 
@@ -32,32 +42,31 @@ class BookDetails extends Component {
     //Change the property of shelf based on what shelf a book is on
 
 
-    updateShelf = () => {
+    updateShelf = (value) => {
 
-        const {book, shelf}= this.props
-        BooksAPI.update(book, shelf).then(({booksList}) => {
-            if(this.props.shelf == 'currentlyReading'){
+        const {book, id, shelf}= this.props
+        BooksAPI.update({id: this.props.id, shelf: value}, value).then(({booksList}) => {
+            if(value == 'currentlyReading'){
 
                 this.setState({shelf: 'currentlyReading'})
 
-            }else if(this.props.shelf == 'Read'){
+            }else if(value == 'Read'){
                 this.setState({shelf:'Read'})
 
-            }else if(this.props.shelf =='wantToRead'){
+            }else if(value  =='wantToRead'){
                 this.setState({shelf:'wantToRead'})
 
-            }else{
+            }else if(value == 'none') {
                 this.setState({shelf: 'none'})
             }
 
-            this.setState({ booksList })
         })
     }
 
     //Render book
 
     render() {
-        const { booksList, title, authors, imageLinks, shelf } = this.props
+        const { booksList, title, authors, imageLinks, shelf, id} = this.props
 
         return (
             <div>
@@ -67,12 +76,13 @@ class BookDetails extends Component {
                             backgroundImage: "url(" + this.props.imgURL + ")"
                         }}> </div>
                         <div className="book-shelf-changer">
-                            <select value= {this.props.booksList} onChange={(event) => {this.updateShelf(event.target.value)}}>
+                            <select value= {this.state.value}
+                                    onChange={(event) => {this.updateShelf(event.target.value)}}>
                                 <option value="move" disabled>Move to...</option>
-                                <option value="currentlyReading">{this.props.shelf}</option>
-                                <option value="wantToRead">{this.props.shelf}</option>
-                                <option value="read">{this.props.shelf}</option>
-                                <option value="none">{this.props.shelf}</option>
+                                <option value="currentlyReading">Currently Reading</option>
+                                <option value="wantToRead">Want to Read </option>
+                                <option value="read">Read</option>
+                                <option value="none">None</option>
                             </select>
                             {/*<div className="book-shelf-category">*/}
                                 {/*<booksList shelf = {this.props.updateShelf} />*/}

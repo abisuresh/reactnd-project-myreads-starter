@@ -70,8 +70,12 @@ class BooksSearch extends Component {
                              {/* Creating a function to iterate over each book and
                              render a BookDetails component  */}
                             {this.state.booksList.map( (book) => (<BookDetails
-                                key = {book.imageLinks} imgURL= {book.imageLinks.thumbnail} title= {book.title} authors= {book.authors}
+                                id = {book.id} key = {book.id} imgURL= {book.imageLinks.thumbnail} title= {book.title} authors= {book.authors}
                                 shelf={book.shelf}/>))}
+
+                            {/*if !(imgURL) {*/}
+                            {/*imgURL= http://via.placeholder.com/128x193?text=?*/}
+                        {/*}*/}
                         </ol>
                     </div>
 
