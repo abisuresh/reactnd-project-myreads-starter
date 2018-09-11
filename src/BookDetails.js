@@ -8,6 +8,10 @@ import AlteringLists from './AlteringLists'
 
 class BookDetails extends Component {
 
+    static propTypes = {
+        shelf: PropTypes.toString.isRequired
+    }
+
     state = {
 
         booksList: []
@@ -24,6 +28,32 @@ class BookDetails extends Component {
     //     })
     // }
 
+    //Function to filter the books based on what shelf they are on
+    //Change the property of shelf based on what shelf a book is on
+
+
+    updateShelf = () => {
+
+        const {book, shelf}= this.props
+        BooksAPI.update(book, shelf).then(({booksList}) => {
+            if(this.props.shelf == 'currentlyReading'){
+
+                this.setState({shelf: 'currentlyReading'})
+
+            }else if(this.props.shelf == 'Read'){
+                this.setState({shelf:'Read'})
+
+            }else if(this.props.shelf =='wantToRead'){
+                this.setState({shelf:'wantToRead'})
+
+            }else{
+                this.setState({shelf: 'none'})
+            }
+
+            this.setState({ booksList })
+        })
+    }
+
     //Render book
 
     render() {
@@ -37,12 +67,12 @@ class BookDetails extends Component {
                             backgroundImage: "url(" + this.props.imgURL + ")"
                         }}> </div>
                         <div className="book-shelf-changer">
-                            <select>
+                            <select value= {this.props.booksList} onChange={(event) => {this.updateShelf(event.target.value)}}>
                                 <option value="move" disabled>Move to...</option>
-                                <option value="currentlyReading">Currently Reading</option>
-                                <option value="wantToRead">Want to Read</option>
-                                <option value="read">Read</option>
-                                <option value="none">None</option>
+                                <option value="currentlyReading">{this.props.shelf}</option>
+                                <option value="wantToRead">{this.props.shelf}</option>
+                                <option value="read">{this.props.shelf}</option>
+                                <option value="none">{this.props.shelf}</option>
                             </select>
                             {/*<div className="book-shelf-category">*/}
                                 {/*<booksList shelf = {this.props.updateShelf} />*/}

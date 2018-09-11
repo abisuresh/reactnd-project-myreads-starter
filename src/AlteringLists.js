@@ -8,6 +8,10 @@ import App from './App'
 
 class AlteringLists extends Component {
 
+    static propTypes = {
+        shelf: PropTypes.toString.isRequired
+    }
+
     state =  {
         booksList: []
     }
@@ -56,12 +60,6 @@ class AlteringLists extends Component {
     //         this.setState({ booksList })
     //     })
     // }
-
-    //Function to change lists
-
-    changeList = (booksList) => {
-        this.setState()
-    }
 
     //Function to add a new book (that isn't already on a list) to a list- addBook function
 
@@ -117,8 +115,8 @@ class AlteringLists extends Component {
                     </div>
                 </div>
             </div>
-                    )
-                }
-            }
+        )
+    }
+}
 
-        export default AlteringLists
+export default AlteringLists
