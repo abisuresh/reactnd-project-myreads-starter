@@ -4,6 +4,7 @@ import sortBy from 'sort-by'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
+import AlteringLists from './AlteringLists'
 
 class BookDetails extends Component {
 
@@ -15,12 +16,13 @@ class BookDetails extends Component {
 
     //Update what shelf book is on
 
-    updateShelf = () => {
-        const {book, shelf}= this.props
-        BooksAPI.update(book, shelf).then((booksList) => {
-            this.setState({ booksList })
-        })
-    }
+    // updateShelf = () => {
+    //
+    //     const {book, shelf}= this.props
+    //     BooksAPI.update(book, shelf).then((booksList) => {
+    //         this.setState({ booksList })
+    //     })
+    // }
 
     //Render book
 
@@ -42,9 +44,9 @@ class BookDetails extends Component {
                                 <option value="read">Read</option>
                                 <option value="none">None</option>
                             </select>
-                            <div className="book-shelf-category">
-                                <booksList shelf = {this.props.updateShelf} />
-                            </div>
+                            {/*<div className="book-shelf-category">*/}
+                                {/*<booksList shelf = {this.props.updateShelf} />*/}
+                            {/*</div>*/}
                         </div>
                     </div>
                     <div className="book-title">{this.props.title}</div>
