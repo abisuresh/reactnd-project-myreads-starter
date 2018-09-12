@@ -4,7 +4,6 @@ import sortBy from 'sort-by'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
-import ShelfLayout from './ShelfLayout'
 
 class BookDetails extends Component {
     //
@@ -15,6 +14,7 @@ class BookDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {value: props.shelf}
+        // this.updateCallback = this.updateCallback.bind(this)
     }
 
     state = {
@@ -26,6 +26,11 @@ class BookDetails extends Component {
     shelfChange= function(event){
         this.setState({value:event.target.value});
 
+    }
+
+    //Adding a life cycle method
+    componentWillUnmount(){
+        
     }
 
     //Update what shelf book is on

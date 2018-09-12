@@ -77,6 +77,7 @@ class BooksSearch extends Component {
 
                             {/*if !(imgURL) {*/}
                             {/*imgURL= http://via.placeholder.com/128x193?text=?*/}
+                            {/*{testImage ? !(imgURL) }*/}
                         {/*}*/}
                         </ol>
                     </div>

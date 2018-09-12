@@ -40,6 +40,8 @@ class BooksApp extends React.Component {
       })
     }
 
+
+
     //function to update an individual book in the state
     // bookStateUpdate(id, shelf) {
     //   this.state.booksList.filter(function (book, index){
@@ -57,7 +59,7 @@ class BooksApp extends React.Component {
             const book = this.state.booksList[i]
             if(book.id === id){
                 const newBookList = this.state.booksList.slice()
-                newBookList[i]= Object.assign({shelf: shelf}, book)
+                newBookList[i]= Object.assign(book, {shelf: shelf})
                 this.setState({booksList: newBookList})
             }
         }
@@ -117,6 +119,8 @@ class BooksApp extends React.Component {
                                           // onChange={(event) => {this.updatingShelfLayout(event.target.value)} }
                                           id = {book.id} key = {book.id} imgURL= {book.imageLinks.thumbnail} title= {book.title} authors= {book.authors}
                                           shelf={book.shelf}
+
+                                          updateCallback = {this.bookStateUpdate}
                                       /></li>)
 
                                   })}
@@ -136,6 +140,8 @@ class BooksApp extends React.Component {
                                           // onChange={(event) => {this.updatingShelfLayout(event.target.value)} }
                                           id = {book.id} key = {book.id} imgURL= {book.imageLinks.thumbnail} title= {book.title} authors= {book.authors}
                                           shelf={book.shelf}
+
+                                          updateCallback = {this.bookStateUpdate}
                                       /></li>)
 
                                   })}
