@@ -10,7 +10,14 @@ import BookDetails from './BookDetails'
 import ShelfLayout from './ShelfLayout'
 
 class BooksApp extends React.Component {
-  state = {
+
+    //Bind the update function to app object
+    constructor(props){
+        super(props);
+        this.bookStateUpdate = this.bookStateUpdate.bind(this)
+    }
+
+    state = {
     /**
      * TODO: Instead of using this state variable to keep track of which page
      * we're on, use the URL in the browser's address bar. This will ensure that
@@ -34,14 +41,32 @@ class BooksApp extends React.Component {
     }
 
     //function to update an individual book in the state
-    bookStateUpdate(id, shelf) {
-      this.state.booksList.filter((book) => book.id === id)[0]
+    // bookStateUpdate(id, shelf) {
+    //   this.state.booksList.filter(function (book, index){
+    //       if(book.id === id){
+    //           const newBookList = this.state.booksList.slice()
+    //           newBookList[index]= Object.assign({shelf: shelf}, book)
+    //           this.setState({booksList: newBookList})
+    //       }
+    //     })
+    // }
+
+
+    bookStateUpdate(id, shelf){
+        for(let i=0; i< this.state.booksList.length; i++){
+            const book = this.state.booksList[i]
+            if(book.id === id){
+                const newBookList = this.state.booksList.slice()
+                newBookList[i]= Object.assign({shelf: shelf}, book)
+                this.setState({booksList: newBookList})
+            }
+        }
     }
 
-  //render page
+  //render home page
     // Add state updates to books
-    // Update and expand  functionality for search
-    // Use Route to make sure back-page and forward-page work as expected
+    // Update and expand functionality for search
+    // Use Route to set homepage to "/" and the search page to "/search"
 
   render() {
     return (
@@ -71,6 +96,8 @@ class BooksApp extends React.Component {
                                           // onChange={(event) => {this.updatingShelfLayout(event.target.value)} }
                                           id = {book.id} key = {book.id} imgURL= {book.imageLinks.thumbnail} title= {book.title} authors= {book.authors}
                                           shelf={book.shelf}
+
+                                          updateCallback = {this.bookStateUpdate}
                                       /></li>)
 
                                   })}

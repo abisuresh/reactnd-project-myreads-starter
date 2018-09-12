@@ -43,6 +43,7 @@ class BookDetails extends Component {
 
 
     updateShelf = (value) => {
+        this.props.updateCallback(this.props.id, value)
 
         // const {book, id, shelf}= this.props
         BooksAPI.update({id: this.props.id, shelf: value}, value).then(() => {

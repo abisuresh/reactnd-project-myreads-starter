@@ -44,7 +44,8 @@ class BooksSearch extends Component {
                 <div className="search-books">
                     <div className="search-books-bar">
                         {/*<a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>*/}
-                        <Link className="close-search" to="/">Close</Link>
+                        <Link className="close-search" to="/" target="_self">Close</Link>
+                        {/*onClick={window.location.reload()}*/}
                         <div className="search-books-input-wrapper">
                             {/*
                              NOTES: The search from BooksAPI is limited to a particular set of search terms.
@@ -70,6 +71,7 @@ class BooksSearch extends Component {
                              {/* Creating a function to iterate over each book and
                              render a BookDetails component  */}
                             {this.state.booksList.map( (book) => (<BookDetails
+                                updateCallback = {() => {}}
                                 id = {book.id} key = {book.id} imgURL= {book.imageLinks.thumbnail} title= {book.title} authors= {book.authors}
                                 shelf={book.shelf}/>))}
 
