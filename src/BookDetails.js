@@ -44,22 +44,22 @@ class BookDetails extends Component {
 
     updateShelf = (value) => {
 
-        const {book, id, shelf}= this.props
-        BooksAPI.update({id: this.props.id, shelf: value}, value).then(({booksList}) => {
-            if(value == 'currentlyReading'){
+        // const {book, id, shelf}= this.props
+        BooksAPI.update({id: this.props.id, shelf: value}, value).then(() => {
+            // if(value == 'currentlyReading'){
+            //     this.setState({shelf: 'currentlyReading'})
+            //
+            // }else if(value == 'read'){
+            //     this.setState({shelf:'read'})
+            //
+            // }else if(value  =='wantToRead'){
+            //     this.setState({shelf:'wantToRead'})
+            //
+            // }else if(value == 'none') {
+            //     this.setState({shelf: 'none'})
+            // }
 
-                this.setState({shelf: 'currentlyReading'})
-
-            }else if(value == 'Read'){
-                this.setState({shelf:'Read'})
-
-            }else if(value  =='wantToRead'){
-                this.setState({shelf:'wantToRead'})
-
-            }else if(value == 'none') {
-                this.setState({shelf: 'none'})
-            }
-
+            this.setState({shelf: value.bind})
         })
     }
 

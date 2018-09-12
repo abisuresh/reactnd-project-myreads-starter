@@ -53,17 +53,19 @@ class ShelfLayout extends Component {
         const { title, authors, imageLinks, shelf, id} = this.props
         return (
             <div>
-                <div className="bookshelf-title">
-                {this.props.booksList.filter((book) => book.shelf === 'currentlyReading').map((book) => {
+                <div className="bookshelf-books">
+                    <ol className="books-grid">
+                        {this.props.booksList.filter((book) => book.shelf === shelf).map((book) => {
 
-                    return (<BookDetails
+                    return (<li> <BookDetails
                         // value = {this.state.query.bind}
                         // onChange={(event) => {this.updatingShelfLayout(event.target.value)} }
                         id = {book.id} key = {book.id} imgURL= {book.imageLinks.thumbnail} title= {book.title} authors= {book.authors}
                         shelf={book.shelf}
-                    />)
+                    /></li>)
 
                 })}
+                    </ol>
                 </div>
             </div>
         )
