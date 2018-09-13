@@ -35,24 +35,18 @@ class BooksApp extends React.Component {
 
     //Adding a life cycle method
     componentDidMount(){
+      this.mount = true;
       BooksAPI.getAll().then((booksList) => {
         this.setState({ booksList })
       })
     }
 
+    componentWillUnmount(){
+      this.mount = false;
+    }
 
 
     //function to update an individual book in the state
-    // bookStateUpdate(id, shelf) {
-    //   this.state.booksList.filter(function (book, index){
-    //       if(book.id === id){
-    //           const newBookList = this.state.booksList.slice()
-    //           newBookList[index]= Object.assign({shelf: shelf}, book)
-    //           this.setState({booksList: newBookList})
-    //       }
-    //     })
-    // }
-
 
     bookStateUpdate(id, shelf){
         for(let i=0; i< this.state.booksList.length; i++){

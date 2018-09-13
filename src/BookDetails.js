@@ -6,11 +6,8 @@ import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 
 class BookDetails extends Component {
-    //
-    // static propTypes = {
-    //     shelf: PropTypes.toString().isRequired
-    // }
 
+    //Constructor to set the state of value in select option for dropdown
     constructor(props) {
         super(props);
         this.state = {value: props.shelf}
@@ -29,23 +26,14 @@ class BookDetails extends Component {
     }
 
     //Adding a life cycle method
+    //Unmounting BookDetails component's API call
     componentWillUnmount(){
-        
+        this.mount= false;
     }
 
     //Update what shelf book is on
-
-    // updateShelf = () => {
-    //
-    //     const {book, shelf}= this.props
-    //     BooksAPI.update(book, shelf).then((booksList) => {
-    //         this.setState({ booksList })
-    //     })
-    // }
-
-    //Function to filter the books based on what shelf they are on
-    //Change the property of shelf based on what shelf a book is on
-
+        //Function to filter the books based on what shelf they are on
+        //Change the property of shelf based on what shelf a book is on
 
     updateShelf = (value) => {
         this.props.updateCallback(this.props.id, value)

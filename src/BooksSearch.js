@@ -17,20 +17,6 @@ class BooksSearch extends Component {
 
     }
 
-    //Create function to search for books
-    // findingBook = () => {
-    //     const { booksList } = this.props
-    //     // booksList.filter(name => this.booksList.name){
-    //
-    //     const resultSearch = booksList.find(function(elem){
-    //         const result = booksList.str.search(elem)
-    //         return result
-    //     })
-    //
-    //     if(resultSearch){
-    //     }
-    // }
-
     //Function that searches for books
     findingBook (query) {
         BooksAPI.search(query).then((booksList) => {
@@ -38,8 +24,19 @@ class BooksSearch extends Component {
         })
     }
 
+    //Checking if book has thumbnail
+    //Adding a placeholder thumbnail if not
+
+
+
     render() {
         const booksList = this.state.booksList
+        const testImage = this.state.booksList
+        const { title, authors, imageLinks, shelf, id} = this.props
+        // testImage(book){
+        // BookDetails.filter((book) => book.imageLinks !== imageLinks).map((book) => {
+        //     imageLinks = http://via.placeholder.com/128x193?text=?
+        // }
         return (
                 <div className="search-books">
                     <div className="search-books-bar">
@@ -70,15 +67,14 @@ class BooksSearch extends Component {
                         <ol className="books-grid">
                              {/* Creating a function to iterate over each book and
                              render a BookDetails component  */}
-                            {this.state.booksList.map( (book) => (<BookDetails
+
+                            {this.state.booksList.map((book) => (
+
+                                <BookDetails
                                 updateCallback = {() => {}}
                                 id = {book.id} key = {book.id} imgURL= {book.imageLinks.thumbnail} title= {book.title} authors= {book.authors}
                                 shelf={book.shelf}/>))}
 
-                            {/*if !(imgURL) {*/}
-                            {/*imgURL= http://via.placeholder.com/128x193?text=?*/}
-                            {/*{testImage ? !(imgURL) }*/}
-                        {/*}*/}
                         </ol>
                     </div>
 
