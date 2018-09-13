@@ -60,14 +60,19 @@ class BookDetails extends Component {
     //Render book
 
     render() {
-        const { booksList, title, authors, imageLinks, shelf, id} = this.props
+        const { booksList, title, authors, shelf, id} = this.props
+        let { imgURL, backupImage, imageLinks, thumbnail} = this.props
+
+        if(!(this.props.imageLinks===undefined)){
+            this.props.imgURL= "http://via.placeholder.com/128x193?text=?"
+        }
 
         return (
             <div>
                 <div className="book">
                     <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 193,
-                            backgroundImage: "url(" + this.props.imgURL + ")"
+                            backgroundImage: "url(" + imgURL + ")"
                         }}> </div>
                         <div className="book-shelf-changer">
                             <select value= {this.state.value}

@@ -45,7 +45,6 @@ class BooksApp extends React.Component {
       this.mount = false;
     }
 
-
     //function to update an individual book in the state
 
     bookStateUpdate(id, shelf){

@@ -27,12 +27,8 @@ class BooksSearch extends Component {
     //Checking if book has thumbnail
     //Adding a placeholder thumbnail if not
 
-
-
     render() {
         const booksList = this.state.booksList
-        const testImage = this.state.booksList
-        const { title, authors, imageLinks, shelf, id} = this.props
         // testImage(book){
         // BookDetails.filter((book) => book.imageLinks !== imageLinks).map((book) => {
         //     imageLinks = http://via.placeholder.com/128x193?text=?
