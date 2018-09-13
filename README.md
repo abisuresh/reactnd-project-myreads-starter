@@ -93,16 +93,10 @@ For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
 
 #How to install 
 
-METHOD 1: 
-
 Git clone this repository: https://github.com/abisuresh/reactnd-project-myreads-starter 
     by typing git clone: https://github.com/abisuresh/reactnd-project-myreads-starter into the terminal after getting into the
     directory you would like 
 Type npm install in terminal  
-
-METHOD 2: 
-
-
 
 #How to launch 
 
