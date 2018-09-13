@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
-import escapeRegExp from 'escape-string-regexp'
-import sortBy from 'sort-by'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 import BookDetails from "./BookDetails";
-
 
 class BooksSearch extends Component {
 
@@ -57,9 +54,6 @@ class BooksSearch extends Component {
                         </div>
                     </div>
                     <div className="search-books-results">
-                        {/*<BookDetails*/}
-                            {/*onSearch = {this.findingBook}*/}
-                        {/*/>*/}
                         <ol className="books-grid">
                              {/* Creating a function to iterate over each book and
                              render a BookDetails component  */}

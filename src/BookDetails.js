@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import escapeRegExp from 'escape-string-regexp'
-import sortBy from 'sort-by'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
@@ -20,11 +18,6 @@ class BookDetails extends Component {
 
     }
 
-    shelfChange= function(event){
-        this.setState({value:event.target.value});
-
-    }
-
     //Adding a life cycle method
     //Unmounting BookDetails component's API call
     componentWillUnmount(){
@@ -40,19 +33,6 @@ class BookDetails extends Component {
 
         // const {book, id, shelf}= this.props
         BooksAPI.update({id: this.props.id, shelf: value}, value).then(() => {
-            // if(value == 'currentlyReading'){
-            //     this.setState({shelf: 'currentlyReading'})
-            //
-            // }else if(value == 'read'){
-            //     this.setState({shelf:'read'})
-            //
-            // }else if(value  =='wantToRead'){
-            //     this.setState({shelf:'wantToRead'})
-            //
-            // }else if(value == 'none') {
-            //     this.setState({shelf: 'none'})
-            // }
-
             this.setState({shelf: value.bind})
         })
     }
@@ -63,6 +43,9 @@ class BookDetails extends Component {
         const { booksList, title, authors, shelf, id} = this.props
         let { imgURL, backupImage, imageLinks, thumbnail} = this.props
 
+        //Checking if there is an associated image link with a book
+        //Adding a placeholder image url if there is not one
+        //Keeping the url if there is one
         if((this.props.imageLinks===undefined)){
             imageLinks= "http://via.placeholder.com/128x193?text=?"
         }else{
