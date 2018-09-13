@@ -31,7 +31,7 @@ class ShelfLayout extends Component {
                     return (<li> <BookDetails
                         // value = {this.state.query.bind}
                         // onChange={(event) => {this.updatingShelfLayout(event.target.value)} }
-                        id = {book.id} key = {book.id} imgURL= {book.imageLinks.thumbnail} title= {book.title} authors= {book.authors}
+                        id = {book.id} key = {book.id} imageLinks={book.imageLinks} title= {book.title} authors= {book.authors}
                         shelf={book.shelf}
                     /></li>)
 

@@ -89,8 +89,9 @@ class BooksApp extends React.Component {
                                       return (<li> <BookDetails
                                           // value = {this.state.query.bind}
                                           // onChange={(event) => {this.updatingShelfLayout(event.target.value)} }
-                                          id = {book.id} key = {book.id} imgURL= {book.imageLinks.thumbnail} title= {book.title} authors= {book.authors}
-                                          shelf={book.shelf}
+                                          id = {book.id} key = {book.id}
+                                          imageLinks = {book.imageLinks} title= {book.title} authors= {book.authors}
+                                          thumbnail = {book.thumbnail} shelf={book.shelf}
 
                                           updateCallback = {this.bookStateUpdate}
                                       /></li>)
@@ -110,8 +111,8 @@ class BooksApp extends React.Component {
                                       return (<li> <BookDetails
                                           // value = {this.state.query.bind}
                                           // onChange={(event) => {this.updatingShelfLayout(event.target.value)} }
-                                          id = {book.id} key = {book.id} imgURL= {book.imageLinks.thumbnail} title= {book.title} authors= {book.authors}
-                                          shelf={book.shelf}
+                                          id = {book.id} key = {book.id} imageLinks = {book.imageLinks}
+                                          title= {book.title} authors= {book.authors} thumbnail = {book.thumbnail} shelf={book.shelf}
 
                                           updateCallback = {this.bookStateUpdate}
                                       /></li>)
@@ -131,8 +132,8 @@ class BooksApp extends React.Component {
                                       return (<li> <BookDetails
                                           // value = {this.state.query.bind}
                                           // onChange={(event) => {this.updatingShelfLayout(event.target.value)} }
-                                          id = {book.id} key = {book.id} imgURL= {book.imageLinks.thumbnail} title= {book.title} authors= {book.authors}
-                                          shelf={book.shelf}
+                                          id = {book.id} key = {book.id} imageLinks = {book.imageLinks}
+                                          title= {book.title} authors= {book.authors} thumbnail = {book.thumbnail}  shelf={book.shelf}
 
                                           updateCallback = {this.bookStateUpdate}
                                       /></li>)

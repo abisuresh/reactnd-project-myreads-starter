@@ -68,8 +68,8 @@ class BooksSearch extends Component {
 
                                 <BookDetails
                                 updateCallback = {() => {}}
-                                id = {book.id} key = {book.id} imgURL= {book.imageLinks.thumbnail} title= {book.title} authors= {book.authors}
-                                shelf={book.shelf}/>))}
+                                id = {book.id} key = {book.id} imageLinks = {book.imageLinks}
+                                thumbnail = {book.thumbnail} title= {book.title} authors= {book.authors} shelf={book.shelf}/>))}
 
                         </ol>
                     </div>
