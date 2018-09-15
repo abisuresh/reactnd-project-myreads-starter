@@ -16,9 +16,13 @@ class BooksSearch extends Component {
 
     //Function that searches for books
     findingBook (query) {
-        BooksAPI.search(query).then((booksList) => {
-            this.setState({ booksList: booksList })
-        })
+        if(query == ""){
+            this.setState({booksList: []})
+        }else{
+            BooksAPI.search(query).then((booksList) => {
+                this.setState({ booksList: booksList })
+            })
+        }
     }
 
     //Checking if book has thumbnail
