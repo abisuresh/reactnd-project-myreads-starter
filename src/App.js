@@ -70,7 +70,9 @@ class BooksApp extends React.Component {
                 <div className="app">
                     <div>
                         <Route exact path="/search" render={() => (
-                            <BooksSearch/>
+                            <BooksSearch
+                                shelfBooks = {this.state.booksList}
+                            />
                         )}/>
                         <Route exact path="/" render={() => (
                             <div className="list-books">
@@ -85,7 +87,7 @@ class BooksApp extends React.Component {
                                                 <div className="bookshelf-books">
                                                     <ol className="books-grid">
                                                         {this.state.booksList.filter((book) => book.shelf === 'currentlyReading').map((book) => {
-                                                            return (<li> <BookDetails
+                                                            return (<li key = {book.id}> <BookDetails
                                                                 // value = {this.state.query.bind}
                                                                 // onChange={(event) => {this.updatingShelfLayout(event.target.value)} }
                                                                 id = {book.id} key = {book.id}
@@ -106,7 +108,7 @@ class BooksApp extends React.Component {
                                                     <ol className="books-grid">
                                                         {this.state.booksList.filter((book) => book.shelf === 'wantToRead').map((book) => {
 
-                                                            return (<li> <BookDetails
+                                                            return (<li key = {book.id}> <BookDetails
                                                                 // value = {this.state.query.bind}
                                                                 // onChange={(event) => {this.updatingShelfLayout(event.target.value)} }
                                                                 id = {book.id} key = {book.id} imageLinks = {book.imageLinks}
@@ -126,7 +128,7 @@ class BooksApp extends React.Component {
                                                 <div className="bookshelf-books">
                                                     <ol className="books-grid">
                                                         {this.state.booksList.filter((book) => book.shelf === 'read').map((book) => {
-                                                            return (<li> <BookDetails
+                                                            return (<li key = {book.id}> <BookDetails
                                                                 // value = {this.state.query.bind}
                                                                 // onChange={(event) => {this.updatingShelfLayout(event.target.value)} }
                                                                 id = {book.id} key = {book.id} imageLinks = {book.imageLinks}

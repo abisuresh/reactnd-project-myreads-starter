@@ -25,6 +25,17 @@ class BooksSearch extends Component {
         }
     }
 
+    //Function to determine shelf state
+
+    getShelf(book){
+        let bookResults = this.props.shelfBooks.filter((shelfBook) => shelfBook.id == book.id)
+        if(bookResults.length === 0){
+            return 'none'
+        }else{
+            return bookResults[0].shelf
+        }
+    }
+
     //Checking if book has thumbnail
     //Adding a placeholder thumbnail if not
 
@@ -63,15 +74,13 @@ class BooksSearch extends Component {
                              render a BookDetails component  */}
 
                             {this.state.booksList.map((book) => {
-                                if(book.shelf === undefined){
-                                    book.shelf = 'none'
-                                }
+
                                 return (
 
                                     <BookDetails
                                         updateCallback = {() => {}}
                                         id = {book.id} key = {book.id} imageLinks = {book.imageLinks}
-                                        thumbnail = {book.thumbnail} title= {book.title} authors= {book.authors} shelf={book.shelf}/>)
+                                        thumbnail = {book.thumbnail} title= {book.title} authors= {book.authors} shelf={this.getShelf(book)}/>)
                             })}
 
                         </ol>
