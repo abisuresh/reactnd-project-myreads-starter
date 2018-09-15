@@ -62,12 +62,17 @@ class BooksSearch extends Component {
                              {/* Creating a function to iterate over each book and
                              render a BookDetails component  */}
 
-                            {this.state.booksList.map((book) => (
+                            {this.state.booksList.map((book) => {
+                                if(book.shelf === undefined){
+                                    book.shelf = 'none'
+                                }
+                                return (
 
-                                <BookDetails
-                                updateCallback = {() => {}}
-                                id = {book.id} key = {book.id} imageLinks = {book.imageLinks}
-                                thumbnail = {book.thumbnail} title= {book.title} authors= {book.authors} shelf={book.shelf}/>))}
+                                    <BookDetails
+                                        updateCallback = {() => {}}
+                                        id = {book.id} key = {book.id} imageLinks = {book.imageLinks}
+                                        thumbnail = {book.thumbnail} title= {book.title} authors= {book.authors} shelf={book.shelf}/>)
+                            })}
 
                         </ol>
                     </div>
