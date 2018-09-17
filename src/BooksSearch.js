@@ -20,7 +20,12 @@ class BooksSearch extends Component {
             this.setState({booksList: []})
         }else{
             BooksAPI.search(query).then((booksList) => {
-                this.setState({ booksList: booksList })
+                if(Array.isArray(booksList)){
+                    this.setState({ booksList: booksList })
+                }else{
+                    this.setState({booksList: []})
+                }
+
             })
         }
     }
