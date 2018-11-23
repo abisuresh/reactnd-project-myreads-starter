@@ -54,7 +54,7 @@ class BooksSearch extends Component {
                 <div className="search-books">
                     <div className="search-books-bar">
                         {/*<a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>*/}
-                        <Link className="close-search" to="/" target="_self">Close</Link>
+                        <Link className="close-search" to= {`${process.env.PUBLIC_URL}/`} target="_self">Close</Link>
                         {/*onClick={window.location.reload()}*/}
                         <div className="search-books-input-wrapper">
                             {/*

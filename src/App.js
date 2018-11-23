@@ -69,12 +69,12 @@ class BooksApp extends React.Component {
 
                 <div className="app">
                     <div>
-                        <Route exact path="/search" render={() => (
+                        <Route exact path={`${process.env.PUBLIC_URL}/search`} render={() => (
                             <BooksSearch
                                 shelfBooks = {this.state.booksList}
                             />
                         )}/>
-                        <Route exact path="/" render={() => (
+                        <Route exact path={`${process.env.PUBLIC_URL}/`} render={() => (
                             <div className="list-books">
                                 <div className="list-books-title">
                                     <h1>MyReads</h1>
@@ -147,7 +147,7 @@ class BooksApp extends React.Component {
                         )}
                         />
                         <div className="open-search">
-                            <Link className="open-search" to="/search">Add a book</Link>
+                            <Link className="open-search" to= {`${process.env.PUBLIC_URL}/search`}>Add a book</Link>
                         </div>
                     </div>
                 </div>
